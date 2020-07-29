@@ -1,8 +1,8 @@
 let bindIt = function(func, bindedObj) {
     
-    return function() {
+    return function(...args) {
         
-        return func.apply(bindedObj);
+        return func.apply(bindedObj, args);
 	};  
 };
 
