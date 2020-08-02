@@ -1,8 +1,8 @@
-let bindIt = function(func, bindedObj) {
+let bindIt = function(func, bindedObj, ...rest) {
     
     return function(...args) {
         
-        return func.apply(bindedObj, args);
+        return func.apply(bindedObj, args.concat(...rest));
 	};  
 };
 
@@ -14,11 +14,11 @@ let user2 = {
     firstName: "Аркадий"
   };
 
-  function showName() {
-    console.log(this.firstName);
+  function showStreetName(nickname) {
+    console.log(`${this.firstName} ${nickname}`);
   }
   
-  let name = bindIt(showName, user2);
+  let name = bindIt(showStreetName, user2, "Рыжий");
   name(); 
 
 
